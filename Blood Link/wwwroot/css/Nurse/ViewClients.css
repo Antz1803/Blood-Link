@@ -1,0 +1,83 @@
+﻿body {
+    background-color: #000;
+    color: #fff; 
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    background-color: #222; 
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+thead th {
+    background-color: #4CAF50;
+    color: white; 
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #444; 
+}
+
+tbody tr:nth-child(even) {
+    background-color: #333; 
+}
+
+tbody tr:hover {
+    background-color: #444; 
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: black;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    button:contains("Accept") {
+        background-color: #4CAF50;
+    }
+
+    button:contains("Decline") {
+        background-color: #f44336; 
+    }
+
+h4 {
+    text-align: center;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9em;
+    }
+
+    thead th {
+        font-size: 0.95em;
+    }
+
+    button {
+        font-size: 0.8em;
+    }
+}

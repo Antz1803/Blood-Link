@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Blood_Link.Models.Person
+
+@{
+    bool error = ViewBag.error ?? false;
+}
+
+<form asp-controller="Doctor" asp-action="AddNurse">
+    <h3 style="text-align: left;">Add Nurse</h3>
+
+    @if (error)
+    {
+        <h5 style="color: red;">Please input all following fields.</h5>
+    }
+
+    <input hidden name="Role" value="Nurse"/>
+
+    <label asp-for="@Model.Username"></label>
+    <input name="Username" value="@Model.Username" />
+
+    <label asp-for="@Model.Password"></label>
+    <input name="Password" value="@Model.Password" />
+
+    <label asp-for="@Model.FirstName"></label>
+    <input name="FirstName" value="@Model.FirstName" />
+
+    <label asp-for="@Model.LastName"></label>
+    <input name="LastName" value="@Model.LastName" />
+
+    <label asp-for="@Model.MiddleName"></label>
+    <input name="MiddleName" value="@Model.MiddleName" />
+
+    <label asp-for="@Model.Email"></label>
+    <input name="Email" value="@Model.Email" />
+
+    <label asp-for="@Model.BloodType"></label>
+    <input name="BloodType" value="@Model.BloodType" />
+
+    <label asp-for="@Model.ContactNo"></label>
+    <input name="ContactNo" value="@Model.ContactNo" />
+
+    <label asp-for="@Model.Gender"></label>
+    <input name="Gender" value="@Model.Gender" />
+
+    <label asp-for="@Model.BirthDate"></label>
+    <input name="BirthDate" value="@Model.BirthDate" type="date" />
+
+    <button>Add Nurse</button>
+</form>
+
+<link href="~/css/client/personaldetails.css" rel="stylesheet" />

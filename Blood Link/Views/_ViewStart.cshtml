@@ -1,0 +1,30 @@
+﻿@{
+
+    string? role = "";
+
+    if (User.Claims.Count() > 0)
+    {
+       role = User.FindFirst("role").Value;
+    }
+
+    if (role != null)
+    {
+        if (role == "Client")
+        {
+            Layout = "ClientLayout";
+        }
+        else if (role == "Nurse")
+        {
+            Layout = "NurseLayout";
+        }
+        else if (role == "Doctor")
+        {
+            Layout = "DoctorLayout";
+        }
+    }
+    else
+    {
+        Layout = null;
+    }
+
+}

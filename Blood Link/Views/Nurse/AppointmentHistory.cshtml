@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Blood_Link.Models.AppointmentSetup>
+
+ <h2 style="color: white">Appointment History</h2>
+
+ <table>
+     <thead>
+        <tr>
+            <th>Hospital/Charity Name</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Nurse ID</th>
+        </tr>
+     </thead>
+
+     <tbody>
+    @foreach (AppointmentSetup a in Model)
+    {
+        <tr>
+            <td>@a.Name</td>
+            <td>@a.Location</td>
+            <td>@a.Desc</td>
+            <td>@a.NurseId</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<link href="~/css/nurse/appointmenthistory.css" rel="stylesheet" />

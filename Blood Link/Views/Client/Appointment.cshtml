@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Blood_Link.Models.AppointmentVM
+
+<h2 style="color:white">Appointment</h2>
+
+<div class="appointments-wrapper">
+        @if (Model.CurrentAppointment != null)
+        {
+        <div class="current-appointment-container">
+                <h3 class="header-text">Current Appointed</h3>
+                <form asp-controller="Client" method="post" class="appointment-form">
+                    <div class="appointment-container">
+                        <input hidden name="AppointmentSetupId" value="@Model.CurrentAppointment.AppointmentSetupId" />
+                        <h2 class="appointment-name">@Model.CurrentAppointment.Name</h2>
+                        <ul class="appointment-details">
+                            <li class="appointment-item"><strong>Location:</strong> @Model.CurrentAppointment.Location</li>
+                            <li class="appointment-item"><strong>Description:</strong> @Model.CurrentAppointment.Desc</li>
+                            <li class="appointment-item"><strong>Date Created:</strong> @Model.CurrentAppointment.DateCreated</li>
+                        </ul>
+                        <button asp-action="CancelAppointment" type="submit" class="appoint-btn">Cancel</button>
+                    </div>
+                </form>
+        </div>
+        }
+
+        @if (Model.AppointmentSetups != null && Model.AppointmentSetups.Count > 0)
+        {
+         <div class="appointment-list-container">
+            <h3 class="header-text">Appointment Lists</h3>
+            @foreach (AppointmentSetup a in Model.AppointmentSetups)
+            {
+                <form asp-controller="Client" asp-action="Appoint" method="post" class="appointment-form">
+                    <div>
+                        <input hidden name="AppointmentSetupId" value="@a.AppointmentSetupId" />
+
+                        <h2 class="appointment-name">@a.Name</h2>
+                        <ul class="appointment-details">
+                            <li class="appointment-item"><strong>Location:</strong> @a.Location</li>
+                            <li class="appointment-item"><strong>Description:</strong> @a.Desc</li>
+                            <li class="appointment-item"><strong>Date Created:</strong> @a.DateCreated</li>
+                        </ul>
+
+                        @if (Model.CurrentAppointment == null)
+                        {
+                            <button type="submit" class="appoint-btn">Appoint</button>
+                        }
+                    </div>
+                </form>
+            }
+        </div>
+        }
+</div>
+
+@if (Model.AppointmentSetups.Count <= 0)
+{
+    <h5 style="color: white; margin-top: 50px; text-align:center" class="no-appointment">There are no appointments at the moment.</h5>
+}
+
+<link href="~/css/client/appointment.css" rel="stylesheet" />
+

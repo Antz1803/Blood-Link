@@ -1,0 +1,51 @@
+﻿@model Blood_Link.Models.AppointmentSetup
+
+<h2 class="appointment-title">Appointment</h2>
+<br />
+
+@if (Model != null)
+{
+    <form asp-controller="Nurse" class="appointment-form">
+        <div class="appointment-container">
+            <input hidden name="AppointmentSetupId" value="@Model.AppointmentSetupId" />
+
+            <h2 class="appointment-name">@Model.Name</h2>
+            <ul class="appointment-details">
+                <li class="appointment-item">Location: @Model.Location</li>
+                <li class="appointment-item">Description: @Model.Desc</li>
+                <li class="appointment-item">Date Created: @Model.DateCreated</li>
+                <li class="appointment-item">Is Active: @Model.isActive</li>
+            </ul>
+            <button asp-action="EndAppointment" class="end-appointment-btn">End Appointment</button>
+            <button asp-action="ViewClients" class="end-appointment-btn">View Clients</button>
+        </div>
+    </form>
+}
+else
+{
+    <h5 class="no-appointment">There's no current appointment at the moment.</h5>
+}
+
+<br />
+<br />
+<div class="action-buttons">
+    <button id="SetAppointment" class="action-btn" onclick="location.href='@Url.Action("SetAppointment", "Nurse")'">Set Appointment</button>
+    <button class="action-btn" onclick="location.href='@Url.Action("AppointmentHistory", "Nurse")'">Appointment History</button>
+</div>
+
+<br />
+<label style="color: white">Note: You can only set one appointment at a time. To create another appointment, end the existing appointment.</label>
+
+<link href="~/css/nurse/appointment.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        @if (Model != null)
+        {
+          <text>
+             $("#SetAppointment").prop('disabled', true);
+             $("#SetAppointment").css('background-color', 'darkred');
+          </text>
+        }
+    });
+</script>

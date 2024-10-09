@@ -1,0 +1,82 @@
+﻿body {
+    background-color: #000;
+    color: #fff; 
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+form {
+    background-color: #222; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    color: white; 
+    text-align: center;
+}
+
+h2, h4 {
+    color: #fff; 
+    text-align: center;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ccc; 
+}
+
+input[type="text"], input[type="date"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333; 
+    color: #fff; 
+    font-size: 1em;
+}
+
+    input[type="text"]::placeholder, input[type="email"]::placeholder {
+        color: #999; 
+    }
+
+button {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #45a049; 
+    }
+
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    input[type="text"], input[type="date"], input[type="email"] {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+}

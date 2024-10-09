@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Blood_Link.Models.Person
+
+@{
+    Layout = null;
+    bool error = ViewBag.error;  
+    string rerror = ViewBag.rerror;  
+    bool success = ViewBag.success;  
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="~/css/login/index.css" rel="stylesheet" />
+    <script src="~/js/login/Index.js"></script>
+</head>
+
+<div class="main-container">
+    <div class="Blooderist">
+		<img src="~/images/login/bloderistlogo.svg" alt="Blooderist logo" />
+    </div>
+
+    <div class="login-reg-panel">
+        <div class="login-info-box">
+            <h2>Have an account?</h2>
+            <label id="label-register" for="log-reg-show">Login</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+        </div>
+
+        <div class="register-info-box">
+            <h2>Don't have an account?</h2>
+            <label id="label-login" for="log-login-show">Register</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+        <div class="white-panel">
+            <form asp-controller="Login" asp-action="userLogin">
+            <div class="login-show">
+                    @if (success)
+                    {
+                        <label style="color: green;">Successfully registered.</label>
+                    }
+                @if (error)
+                {
+                   <label style="color: red;">Wrong Username or Password, Please try again.</label>
+                }
+                <h2>LOGIN</h2>
+                <input type="text" placeholder="Username" id="login-username" asp-for="@Model.Username">
+                <input type="password" placeholder="Password" id="login-password" asp-for="@Model.Password">
+                <a href="">Forgot password?</a>
+                <button>Login</button>
+            </div>
+            </form>
+
+            <form asp-controller="Login" asp-action="Register">
+            <div class="register-show"> 
+                @if (rerror == "empty")
+                {
+                    <label style="color: red;">Please provide a username and password.</label>
+                }
+                else if (rerror == "exist")
+                {
+                    <label style="color: red;">Username already exists</label>
+                }
+                <h2>REGISTER</h2>
+                <input type="text" placeholder="Username" id="register-username" asp-for="@Model.Username">
+                <input type="password" placeholder="Password" id="register-password" asp-for="@Model.Password">
+                <button type="submit">Register</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

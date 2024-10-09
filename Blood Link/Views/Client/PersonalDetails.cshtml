@@ -1,0 +1,56 @@
+﻿@model Blood_Link.Models.UsersVM
+
+@{
+    bool empty = ViewBag.empty;
+    string message = ViewBag.message;
+}
+
+@if(empty)
+{
+    <h4>Please input your details to access the following menus.</h4>
+}
+
+@switch (message)
+{
+    case "error":
+        <h4>Please input the following fields.</h4>
+        break;
+    case "success":
+        <h4>Successfully updated!</h4>
+        break;
+}
+
+<form asp-controller="Client" asp-action="UpdateInformation">
+<div>
+    <h4>Personal Details</h4>
+    <input hidden name="personId" value="@Model.person.personId"/>
+
+    <label asp-for="@Model.person.LastName"></label>
+    <input name="LastName" value="@Model.person.LastName"/>
+
+    <label asp-for="@Model.person.FirstName"></label>
+    <input name="FirstName" value="@Model.person.FirstName"/>
+
+    <label asp-for="@Model.person.MiddleName"></label>
+    <input name="MiddleName" value="@Model.person.MiddleName"/>
+
+    <label asp-for="@Model.person.BloodType"></label>
+    <input name="BloodType" value="@Model.person.BloodType"/>
+
+    <label asp-for="@Model.person.ContactNo"></label>
+    <input name="ContactNo" value="@Model.person.ContactNo"/>
+
+    <label asp-for="@Model.person.Email"></label>
+    <input name="Email" value="@Model.person.Email"/>
+
+    <label asp-for="@Model.person.Gender"></label>
+    <input name="Gender" value="@Model.person.Gender"/>
+
+    <label asp-for="@Model.person.BirthDate"></label>
+    <input name="BirthDate" value="@Model.person.BirthDate" type="date"/>
+
+    <button>Update Information</button>
+</div>
+</form>
+
+<link href="~/css/client/personaldetails.css" rel="stylesheet" />

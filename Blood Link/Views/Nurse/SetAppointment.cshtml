@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Blood_Link.Models.AppointmentSetup
+
+<h2>Set Appointment</h2>
+
+<form asp-controller="Nurse" asp-action="SetAppointment">
+    @Html.ValidationSummary(true)
+
+    <label>Name of Hospital/Charity</label>
+    <input type="text" asp-for="@Model.Name" />
+    @Html.ValidationMessageFor(Model => Model.Name)
+    <br />
+
+    <label>Location</label>
+    <input type="text" asp-for="@Model.Location" />
+    @Html.ValidationMessageFor(Model => Model.Location)
+    <br />
+
+    <label>Description</label>
+    <input type="text" asp-for="@Model.Desc" />
+    @Html.ValidationMessageFor(Model => Model.Desc)
+    <br />
+
+    <label>Date Created</label>
+    <input type="date" asp-for="@Model.DateCreated"/>
+    @Html.ValidationMessageFor(Model => Model.DateCreated)
+    <br />
+
+    <label asp-for="@Model.isActive"></label>
+    <input type="checkbox" asp-for="@Model.isActive"/>
+    @Html.ValidationMessageFor(Model => Model.isActive)
+    <br />
+    <button type="submit">Submit</button>
+</form>
+
+<link href="~/css/nurse/setappointment.css" rel="stylesheet" />
+
+<style>
+    li {
+        color: red;
+    }
+</style>

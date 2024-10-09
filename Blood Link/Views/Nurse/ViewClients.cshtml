@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    string? name = ViewData["name"].ToString();
+    int num = 0;
+}
+
+@model List<Blood_Link.Models.Person>
+<h2>All Clients in @name</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Full Name</th>
+            <th>Blood Type</th>
+            <th>Gender</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (Person p in Model)
+{
+   num++;
+   <tr>
+       <td>@num</td>
+       <td>@p.LastName, @p.FirstName @p.MiddleName</td>
+       <td>@p.BloodType</td>
+       <td>@p.Gender</td>
+       <td>@p.ContactNo</td>
+       <td>@p.Email</td>
+       <td><button>Accept</button></td>
+       <td><button>Decline</button></td>
+   </tr>
+}
+    </tbody>
+</table>
+
+@if (Model.Count <= 0)
+{
+    <h4 style="color: white;">There are no clients at the moment.</h4>
+}
+
+<link href="~/css/nurse/viewclients.css" rel="stylesheet" />
+
